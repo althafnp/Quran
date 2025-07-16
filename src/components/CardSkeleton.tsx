@@ -1,7 +1,7 @@
 
 const CardSkeleton = () => {
   return (
-    <div className="dark:bg-black border border-gray-700 rounded-sm p-3 animate-pulse">
+    <div className="dark:bg-black border border-gray-700 rounded-sm p-3 animate-pulse mb-6">
         <div className="flex items-center justify-between">
             {/* Order Number Skeleton */}
             <div className="flex items-center gap-3">

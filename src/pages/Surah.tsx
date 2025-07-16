@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Verse from "../components/Verse";
 import { ArrowBack, PlayArrow, NavigateBefore, NavigateNext } from '@mui/icons-material'
 import { Tooltip } from '@mui/material'
@@ -10,10 +10,10 @@ import AudioPlayer from "../components/AudioPlayer";
 
 const Surah = () => {
 
-    const navigate = useNavigate()
-
+    const navigate = useNavigate();
+    const location = useLocation();
     const { id } = useParams();
-    const currentId = Number(id)
+    const currentId = Number(id);
 
     const [surah, setSurah] = useState<SurahData | null>(null);
     const [showPlayer, setShowPlayer] = useState<boolean>(false);
@@ -37,13 +37,14 @@ const Surah = () => {
     }
 
     useEffect(() => {
-        getSurah()
-    }, [id])
+        getSurah();
+        window.scrollTo(0, 0);
+    }, [id, location])
 
   return (
     <div className="md:px-10 py-8 relative">
         <Tooltip title='Back'>
-            <div onClick={() => navigate('/')} className="cursor-pointer mb-6 w-fit">
+            <div onClick={() => {navigate('/'); scrollTo(0, 0)}} className="cursor-pointer mb-6 w-fit">
                 <ArrowBack className="dark:text-white" />
             </div>
         </Tooltip>
@@ -94,7 +95,7 @@ const Surah = () => {
                     <Tooltip title='Previous'>
                         <span>
                             <button
-                                onClick={() => navigate(`/${currentId - 1}`)} 
+                                onClick={() => {navigate(`/${currentId - 1}`); scrollTo(0, 0)}} 
                                 disabled={currentId <=1} 
                                 className={`p-2 rounded-md transition duration-100 mr-2
                                     ${currentId <= 1 
@@ -111,7 +112,7 @@ const Surah = () => {
                     <Tooltip title='Next'>
                         <span>
                             <button
-                                onClick={() => navigate(`/${currentId + 1}`)}
+                                onClick={() => {navigate(`/${currentId + 1}`); scrollTo(0, 0)}}
                                 disabled={currentId >= 114}
                                 className={`p-2 rounded-md transition duration-100 
                                     ${currentId >= 114 

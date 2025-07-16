@@ -3,9 +3,12 @@ import Card from "../components/Card"
 import { useEffect, useState } from "react"
 import type { SurahList } from "../Types"
 import CardSkeleton from "../components/CardSkeleton"
+import { useLocation } from "react-router-dom"
 
 
 const Home = () => {
+    const location = useLocation();
+
     const [surahList, setSurahList] = useState<SurahList[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [err, setErr] = useState<string | null>(null);
@@ -28,7 +31,8 @@ const Home = () => {
 
     useEffect(() => {
         getSurahList();
-    }, [])
+        window.scrollTo(0, 0);
+    }, [location])
   return (
     <div>
         {err && (

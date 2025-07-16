@@ -5,7 +5,7 @@ import type { SurahList } from "../Types"
 const Card = ({ index, surahName, surahNameArabic, surahNameTranslation, totalAyah }: SurahList) => {
     const navigate = useNavigate()
   return (
-    <div onClick={() => navigate(`/${index}`)} className="dark:bg-black border border-gray-700 hover:border-green-500 dark:hover:border-green-300  font-semibold rounded-sm p-3 hover:bg-gray-750 transition-all ease-in-out duration-300 cursor-pointer group">
+    <div onClick={() => {navigate(`/${index}`); scrollTo(0,0)}} className="dark:bg-black border border-gray-700 hover:border-green-500 dark:hover:border-green-300  font-semibold rounded-sm p-3 hover:bg-gray-750 transition-all ease-in-out duration-300 cursor-pointer group">
       <div className="flex items-center justify-between">
         {/* Order Number */}
         <div className="flex items-center gap-3">
