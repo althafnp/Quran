@@ -8,7 +8,7 @@ const Navbar = () => {
     const navigate = useNavigate()
   return (
     <div className="sticky top-4 z-50 px-4 md:px-16 lg:px-44">
-        <nav className="dark:bg-gray-900 border border-gray-700 bg-gray-300 rounded-2xl px-6 py-2 mx-auto">
+        <nav className="dark:bg-gray-900 border border-gray-700 shadow dark:shadow-gray-800 shadow-gray-500 bg-gray-100 rounded-2xl px-6 py-2 mx-auto">
             <div className="flex items-center justify-between">
                 {/* Logo/Title */}
                 <h1 onClick={() => navigate('/')} className="dark:text-white text-lg md:text-2xl font-bold cursor-pointer">
@@ -17,7 +17,7 @@ const Navbar = () => {
           
                 {/* Theme Toggle */}
                 <Tooltip title='Change Theme'>
-                    <button onClick={toggleTheme} className="p-2 rounded-md dark:bg-black bg-white transition-colors">
+                    <button onClick={toggleTheme} className="p-2 border rounded-md dark:bg-black bg-white transition-colors">
                         {darkMode ? (
                             <LightMode className="text-yellow-400" />
                         ) : (
