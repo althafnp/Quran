@@ -17,6 +17,7 @@ const Surah = () => {
 
     const [surah, setSurah] = useState<SurahData | null>(null);
     const [showPlayer, setShowPlayer] = useState<boolean>(false);
+    const [showTranslation, setShowTranslation] = useState(false);
     const [loading, setLoading] = useState<boolean>(false);
     const [err, setErr] = useState<string | null>(null);
 
@@ -69,13 +70,20 @@ const Surah = () => {
             <>
                 {/* Surah Title */}
                 <div className="text-center mb-12">
-                    <h1 className="dark:text-white text-3xl md:text-4xl lg:text-6xl font-bold mb-10">{surah.surahNameArabicLong}</h1>
-                    {surah.surahNameArabicLong !== 'سُورَةُ ٱلْفَاتِحَةِ' && <h1 className="dark:text-white text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</h1>}
+                    <h1 className="dark:text-white text-3xl md:text-4xl lg:text-6xl font-bold mb-10 font-arabic">{surah.surahNameArabicLong}</h1>
+                    {surah.surahNameArabicLong !== 'سُورَةُ ٱلْفَاتِحَةِ' && <h1 className="dark:text-white text-2xl md:text-3xl lg:text-4xl font-semibold mb-4 font-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</h1>}
                 </div>
 
-                <div className="w-fit rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300">
-                    <button onClick={() => setShowPlayer(true)} className="dark:text-white p-2 cursor-pointer">Play Audio<PlayArrow /></button>
+                <div className="flex justify-between mb-4">
+                    <div className="w-fit rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300">
+                        <button onClick={() => setShowPlayer(true)} className="dark:text-white p-2 cursor-pointer">Play Audio<PlayArrow /></button>
+                    </div>
+
+                    <div className="w-fit rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300">
+                        <button onClick={() => setShowTranslation(prev => !prev)} className="dark:text-white p-2 cursor-pointer">{showTranslation ? 'Hide Translation' : 'Show Translation'}</button>
+                    </div>
                 </div>
+                
 
                 {/* Verses */}
                 <div className="space-y-0">
@@ -86,6 +94,7 @@ const Surah = () => {
                                 arabicText={ayah}
                                 translation={surah.english[index]}
                                 verseNumber={index + 1}
+                                showTranslation={showTranslation}
                             />
                         ))
                     }

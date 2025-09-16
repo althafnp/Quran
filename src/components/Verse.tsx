@@ -8,9 +8,10 @@ interface VerseProps {
     arabicText: string;
     translation: string;
     verseNumber: number;
+    showTranslation: boolean
 }
 
-const Verse: React.FC<VerseProps> = ({ arabicText, translation, verseNumber }) => {
+const Verse: React.FC<VerseProps> = ({ arabicText, translation, verseNumber, showTranslation }) => {
   return (
     <div className="mb-8 md:mb-12">
         {/* Arabic Text */}
@@ -21,11 +22,16 @@ const Verse: React.FC<VerseProps> = ({ arabicText, translation, verseNumber }) =
         </div>
     
         {/* Translation */}
-        <div className="text-left">
-            <p className="dark:text-gray-300 text-gray-900 text-sm md:text-base lg:text-lg leading-relaxed">
-                {translation}
-            </p>
-        </div>
+        {
+            showTranslation && (
+                <div className="text-left">
+                    <p className="dark:text-gray-300 text-gray-900 text-sm md:text-base lg:text-lg leading-relaxed">
+                        {translation}
+                    </p>
+                </div>
+            )
+        }
+        
     
         {/* Divider */}
         <div className="mt-6 border-t border-gray-700"></div>

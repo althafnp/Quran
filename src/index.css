@@ -1,6 +1,11 @@
 @import "tailwindcss";
-*{
+
+body {
     font-family: 'Radio Canada';
+}
+
+.font-arabic {
+    font-family: 'Amiri', serif;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
